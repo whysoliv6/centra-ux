@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Central UX: o template definitivo para designers, freelancers e times organizarem seus projetos de UX com clareza e método.">
+  <title>Central UX | Organize seus Projetos de UX Agora</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #0e0e11;
+      color: #f2f2f2;
+      line-height: 1.6;
+    }
+    nav {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 1rem 2rem;
+      background: rgba(91, 87, 94, 0.4);
+      backdrop-filter: blur(10px);
+      border-radius: 50px;
+      max-width: 1100px;
+      width: calc(100% - 40px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+    nav > div:first-child {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    nav > div:last-child {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: nowrap;
+    }
+    nav a {
+      text-decoration: none;
+      color: #f2f2f2;
+      font-size: 0.95rem;
+    }
+    nav a.cta {
+      background: #34053C;
+      color: #fff3f5;
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+    nav a.cta:hover {
+      background: #4b0a62;
+    }
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: nowrap;
+      gap: 3rem;
+      padding: 10rem 2rem 4rem;
+      background: radial-gradient(circle at top left, #34053C, #34053C, #D38694);
+      color: #fff;
+      text-align: left;
+    }
+    .hero {
+      max-width: 500px;
+      flex-shrink: 0;
+    }
+    .hero img.logo {
+      width: 80px;
+      animation: float 4s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 700;
+      margin: 1rem 0;
+    }
+    .hero p {
+      font-size: 1.2rem;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .cta-buttons a {
+      padding: 0.9rem 1.6rem;
+      font-weight: 600;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .cta-buttons a.primary {
+      background: #fff;
+      color: #7000b6;
+    }
+    .cta-buttons a.primary:hover {
+      background: #f4e6ff;
+      transform: translateY(-4px);
+    }
+    .cta-buttons a.secondary {
+      border: 2px solid #fff;
+      color: #fff;
+      background: transparent;
+    }
+    .cta-buttons a.secondary:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateY(-4px);
+    }
+    .mockup {
+      max-width: 500px;
+      flex-shrink: 0;
+    }
+    .mockup img {
+      width: 100%;
+      border-radius: 20px;
+      transition: transform 1.0s ease;
+      cursor: pointer;
+    }
+    .mockup img:hover {
+      transform: rotateY(6deg) rotateX(6deg) scale(1.02);
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 4rem 2rem;
+    }
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .urgency {
+      background: #1f0a2b;
+      color: #ffb3d1;
+      padding: 1.2rem;
+      font-weight: 600;
+      text-align: center;
+      border-radius: 12px;
+      margin: 3rem 0;
+    }
+    .highlight {
+      background: #1a1a1f;
+      padding: 3rem;
+      border-radius: 14px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .testimonials {
+      font-style: italic;
+      background: #1a1a1f;
+      border-left: 4px solid #d400ac;
+      padding: 1.5rem;
+      border-radius: 12px;
+      margin: 2.5rem 0;
+    }
+    video {
+      border-radius: 12px;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    footer {
+  background: #0a0a0f;
+  color: #ccc;
+  padding: 4rem 2rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2rem;
+  font-size: 0.95rem;
+}
+
+footer .brand {
+  flex: 1 1 250px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: flex-start;
+}
+
+footer .brand img {
+  width: 60px;
+  margin-bottom: 0.5rem;
+}
+
+footer .links {
+  flex: 2 1 400px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+footer .links div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  min-width: 120px;
+}
+
+footer a {
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+footer a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+footer .bottom {
+  width: 100%;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.85rem;
+  color: #888;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  footer .brand {
+    align-items: center;
+  }
+
+  footer .links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  footer .links div {
+    align-items: center;
+  }
+}
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0); }
+    }
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        gap: 0.5rem;
+        top: 10px;
+        width: calc(100% - 40px);
+      }
+      nav > div:last-child {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      header {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 6rem;
+        gap: 2rem;
+      }
+      .hero, .mockup {
+        max-width: 100%;
+        flex-shrink: 1;
+      }
+       
+      footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      footer .bottom {
+        grid-column: auto;
+      }
+    }
+
+    /* Hover underline */
+    .hover-underline {
+      position: relative;
+      display: inline-block;
+    }
+    .hover-underline::after,
+    .hover-underline::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, #34053C, #D38694);
+      bottom: -5px;
+      left: 0;
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.4s ease-out;
+    }
+    .hover-underline::before {
+      top: -5px;
+      transform-origin: left;
+    }
+    .hover-underline:hover::after,
+    .hover-underline:hover::before {
+      transform: scaleX(1);
+    }
+
+.cards-container {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 1100px;
+  margin: 0 auto 4rem;
+  padding: 0 1rem;
+}
+
+.card {
+  background: #1a1a1f;
+  color: #fff;
+  border-radius: 12px;
+  padding: 2rem 1.5rem 2.5rem;
+  box-shadow: 0 4px 8px rgb(0 0 0 / 0.1);
+  max-width: 260px;
+  flex: 1 1 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.card h3 {
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.card p {
+  color: #ccc;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+/* Ícone */
+.icon-circle {
+  background: #34053C;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  margin-top: -3rem;
+  margin-bottom: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-circle svg {
+  width: 36px;
+  height: 36px;
+  stroke: #fff;
+  stroke-width: 1.5;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
+
+  </style>
+</head>
+<body>
+ <nav>
+    <div>
+      <img src="ICON CENTRAL UX.png" alt="Logo Central UX" style="width: 200px; height: auto;" />
+    </div>
+    <div>
+      <a href="#sobre">Sobre</a>
+      <a href="#video">Ver Template</a>
+      <a href="https://wa.me/5585998333612?text=Olá!%20Tenho%20interesse%20em%20um%20site.">Contato</a>
+      <a href="https://mpago.la/2UiSpnp" class="cta">Quero o meu</a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="hero">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Notion_app_logo.png" alt="Ícone Notion" class="logo" />
+      <h1>Transforme sua forma de trabalhar com UX</h1>
+      <p>Tenha mais clareza, organização e foco nos seus projetos com um template profissional, pronto para usar, feito por quem entende de experiência do usuário.</p>
+      <div class="cta-buttons">
+        <a href="https://mpago.la/2UiSpnp" class="primary">Quero o meu</a>
+        <a href="#video" class="secondary">Ver o template</a>
+      </div>
+    </div>
+    <div class="mockup">
+      <img src="ZenBook Duo 14.png" alt="Mockup do Central UX" />
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="urgency">⚠ Últimas unidades com bônus exclusivo: call gratuita de orientação para usar o template como um pro!</section>
+
+ <section id="sobre" style="margin-bottom: 4rem;">
+  <h2 style="text-align: center; margin-bottom: 2rem; font-weight: 700;">O que você recebe:</h2>
+  <div class="cards-container">
+    <div class="card" style="background: #1a1a1f; color: #fff;">
+      <div class="icon-circle" style="background: #34053C;">
+        <div data-lucide="layout-dashboard" style="stroke: #fff;"></div>
+      </div>
+      <h3>Organização visual impecável</h3>
+      <p>Template com estrutura clara e lógica para te ajudar a apresentar seus projetos de forma profissional e estratégica.</p>
+    </div>
+    <div class="card" style="background: #1a1a1f; color: #fff;">
+      <div class="icon-circle" style="background: #34053C;">
+        <div data-lucide="target" style="stroke: #fff;"></div>
+      </div>
+      <h3>Foco nos objetivos do usuário</h3>
+      <p>Ferramentas para mapear necessidades reais dos usuários e alinhar com metas de negócio.</p>
+    </div>
+    <div class="card" style="background: #1a1a1f; color: #fff;">
+      <div class="icon-circle" style="background: #34053C;">
+        <div data-lucide="layers" style="stroke: #fff;"></div>
+      </div>
+      <h3>Fluxo de projeto completo</h3>
+      <p>Do briefing à entrega final: tenha etapas bem definidas para não se perder no meio do processo.</p>
+    </div>
+    <div class="card" style="background: #1a1a1f; color: #fff;">
+      <div class="icon-circle" style="background: #34053C;">
+        <div data-lucide="users" style="stroke: #fff;"></div>
+      </div>
+      <h3>Feito por quem vive de UX</h3>
+      <p>O template foi criado por uma profissional da área, com base em erros e acertos reais de mercado.</p>
+    </div>
+  </div>
+</section>
+
+<script>
+  lucide.createIcons();
+</script>
+
+
+
+    </div>
+  </section>
+  <script>
+    lucide.createIcons();
+  </script>
+
+   <section class="highlight">
+  <h2 class="hover-underline" style="text-align: center; margin-bottom: 2rem;">Feito para quem quer evoluir</h2>
+  <div style="max-width: 700px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
+    <div style="display: flex; align-items: flex-start; gap: 1.2rem; background: #1a1a1f; padding: 1.2rem 1.8rem; border-radius: 14px; border: 1px solid #34053C;">
+      <div style="min-width: 54px; height: 54px; font-size: 1.4rem; background: #34053C; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">1</div>
+      <div>
+        <strong style="font-size: 1.05rem;">Estudantes que querem ter um portfólio mais profissional</strong>
+        <p style="margin: 0.4rem 0 0; font-size: 1rem; color: #ccc;">Organize seus projetos com estrutura clara desde o início da sua carreira.</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 1.2rem; background: #1a1a1f; padding: 1.2rem 1.8rem; border-radius: 14px; border: 1px solid #34053C;">
+      <div style="min-width: 54px; height: 54px; font-size: 1.4rem; background: #34053C; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">2</div>
+      <div>
+        <strong style="font-size: 1.05rem;">Profissionais que querem se destacar com organização</strong>
+        <p style="margin: 0.4rem 0 0; font-size: 1rem; color: #ccc;">Tenha mais controle e método em todas as etapas do projeto.</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 1.2rem; background: #1a1a1f; padding: 1.2rem 1.8rem; border-radius: 14px; border: 1px solid #34053C;">
+      <div style="min-width: 54px; height: 54px; font-size: 1.4rem; background: #34053C; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">3</div>
+      <div>
+        <strong style="font-size: 1.05rem;">Times que precisam colaborar com clareza</strong>
+        <p style="margin: 0.4rem 0 0; font-size: 1rem; color: #ccc;">Facilite o alinhamento entre membros e otimize o fluxo de trabalho.</p>
+      </div>
+    </div>
+    <div style="display: flex; align-items: flex-start; gap: 1.2rem; background: #1a1a1f; padding: 1.2rem 1.8rem; border-radius: 14px; border: 1px solid #34053C;">
+      <div style="min-width: 54px; height: 54px; font-size: 1.4rem; background: #34053C; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold;">4</div>
+      <div>
+        <strong style="font-size: 1.05rem;">Empreendedores e criadores de produto</strong>
+        <p style="margin: 0.4rem 0 0; font-size: 1rem; color: #ccc;">Construa soluções mais centradas no usuário com agilidade e estratégia.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+    <section>
+      <h2 class="hover-underline">Quem já usou recomenda 💬</h2>
+      <div class="testimonials">
+        “Organizar projetos de UX sempre foi um desafio. Esse template mudou meu fluxo de trabalho completamente. Incrível!” – Kauan Alves, estudante de UX e Designer.
+      </div>
+    </section>
+
+    <section id="video">
+      <h2 class="hover-underline">Veja como funciona 🎥</h2>
+      <p>Assista à demonstração completa do template sendo usado na prática:</p>
+      <video controls>
+        <source src="Gravação de Tela 2025-06-22 212845.mp4" type="video/mp4" />
+        Seu navegador não suporta o vídeo.
+      </video>
+    </section>
+
+    <div class="cta-buttons" style="margin-top: 2rem; justify-content: center;">
+      <a href="https://chat.whatsapp.com/ByC4H8EJh5B25DoZW5UY8A?mode=ac_c" class="primary">💬 Entrar na Comunidade</a>
+      <a href="https://www.instagram.com/central_ux/" class="secondary">📸 Siga no Instagram</a>
+    </div>
+  </main>
+<section class="highlight fade-up-section" style="display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2rem; margin-top: 4rem;">
+  <div style="flex: 1 1 450px; max-width: 550px;">
+    <img src="Group 33583 1.png" alt="Design de Landing Pages e Sites Institucionais" style="width: 100%; border-radius: 20px;" />
+  </div>
+  <div style="flex: 1 1 450px; max-width: 600px; display: flex; flex-direction: column; gap: 1.5rem;">
+    <h2 style="font-size: 2rem; color: #f2f2f2;">Landing pages e sites que vendem por você</h2>
+    <p style="font-size: 1.1rem; color: #ccc;">Crio páginas institucionais e de venda com design estratégico e comunicação persuasiva. Seu cliente vai sentir que precisa do seu serviço.</p>
+    <ul style="color: #ccc; font-size: 1rem; padding-left: 1.2rem; display: flex; flex-direction: column; gap: 0.6rem;">
+      <li>✦ Design sob medida para sua marca</li>
+      <li>✦ Estrutura pensada para conversão</li>
+      <li>✦ Conteúdo claro, direto e envolvente</li>
+    </ul>
+     <div class="button-group">
+        <a href="https://wa.me/5585998333612?text=Olá!%20Tenho%20interesse%20em%20um%20site." target="_blank" class="cta-site-button">
+          Solicitar orçamento ➜
+        </a>
+        <span style="margin-left: 20px;"></span>
+        <a href="/pagina landing/index.html" class="cta-site-button" style="background-color:#4b0a62;">Saber mais</a>
+      </div>
+  </div>
+</section>
+
+<style>
+  /* Animação de entrada suave para a seção */
+  .fade-up-section {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeUp 1.2s ease forwards;
+    animation-delay: 0.3s;
+  }
+
+  @keyframes fadeUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Botão com hover e seta */
+  .cta-site-button {
+    display: inline-block;
+    background: #7b3be8;
+    color: white;
+    padding: 0.9rem 1.6rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 14px rgba(123, 59, 232, 0.3);
+  }
+
+  .cta-site-button:hover {
+    background: #9e5bff;
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(123, 59, 232, 0.4);
+  }
+</style>
+
+
+  <footer>
+  <div class="brand">
+    <img src="ICON CENTRAL UX.png" alt="Logo Central UX" style="width: 300px; height: auto;" />
+    <p>Soluções estratégicas para quem quer começar com método, clareza e impacto.</p>
+  </div>
+  <div class="links">
+    <div>
+      <strong>Explorar</strong>
+      <a href="#">Template</a>
+      <a href="#">Benefícios</a>
+    </div>
+    <div>
+      <strong>Suporte</strong>
+      <a href="mailto:centralux0@gmail.com">Email</a>
+      <a href="https://www.instagram.com/central_ux/">Instagram</a>
+    </div>
+    <div>
+      <strong>Legal</strong>
+      <a href="#">Política de privacidade</a>
+      <a href="#">Termos de uso</a>
+    </div>
+  </div>
+  <div class="bottom">
+    © 2025 Central UX · Feito com ♥ por Vitoria Oliveira
+  </div>
+</footer>
+</body>
+</html>
